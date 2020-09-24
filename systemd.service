@@ -1,0 +1,18 @@
+[Unit]
+Description=Payment Service
+
+[Service]
+User=root
+WorkingDirectory=/home/roboshop/payment
+
+Environment=CART_HOST=
+Environment=USER_HOST=
+EnvironmentAMQP_HOST=172.31.35.16
+EnvironmentAMQP_USER=roboshop
+EnvironmentAMQP_PASS=roboshop123
+
+ExecStart=/usr/local/bin/uwsgi --ini payment.ini
+SyslogIdentifier=payment
+
+[Install]
+WantedBy=multi-user.target
